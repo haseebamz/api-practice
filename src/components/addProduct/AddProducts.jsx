@@ -1,7 +1,8 @@
 import axios from "axios";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import React, { useState } from "react";
-import * as Yup from "yup";
+
+import ProductValidation from "../validations/ProductValidation";
 
 function AddProducts({ onClose }) {
   const [preview, setPreview] = useState(null);
@@ -50,18 +51,6 @@ function AddProducts({ onClose }) {
     category: "",
     image: null,
   };
-  const addProductValidation = Yup.object().shape({
-    id: Yup.number()
-      .integer("ID must be an integer")
-      .positive("ID must be positive")
-      .required("ID is required"),
-    title: Yup.string().required("Name is required"),
-    price: Yup.number()
-      .positive("Price must be positive")
-      .required("Price is required"),
-    description: Yup.string().required("Description is required"),
-    category: Yup.string().required("Category is required"),
-  });
 
   return (
     <div className="modal-overlay">
@@ -69,7 +58,7 @@ function AddProducts({ onClose }) {
         <h2>Add New Product</h2>
         <Formik
           initialValues={initialValues}
-          validationSchema={addProductValidation}
+          validationSchema={ProductValidation}
           onSubmit={handleSubmit}
         >
           {({ setFieldValue }) => (
