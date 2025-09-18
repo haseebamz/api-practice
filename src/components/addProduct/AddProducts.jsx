@@ -32,7 +32,7 @@ function AddProducts({ onClose }) {
           },
         }
       );
-      console.log("API Response:", response.data);
+      console.log("API Response:", response.data , "Product has been added successfully " );
     } catch (error) {
       console.error("API Error:", error.response?.data || error.message);
     } finally {
