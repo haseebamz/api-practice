@@ -46,7 +46,7 @@ function UpdateProduct({ onClose, product }) {
           },
         }
       );
-      console.log("API Response:", response.data);
+      console.log("API Response:", response.data, "Product has been updated" );
     } catch (error) {
       console.error("API Error:", error.response?.data || error.message);
     } finally {
